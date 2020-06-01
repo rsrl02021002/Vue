@@ -1,0 +1,23 @@
+hbuilder环境
+
+ctrl r 运行
+
+项目参考文档
+
+http://www.macrozheng.com/
+项目的文档
+
+http://www.macrozheng.com/#/database/mall_database_overview?id=%e7%94%a8%e6%88%b7%e7%ae%a1%e7%90%86 
+mall数据库表结构概览
+
+http://localhost:8080/swagger-ui.html
+接口
+
+cmd环境
+cd \返回根目录
+cd \xm\mall进入文件夹
+cd ..回到上级目录
+d: 进入D盘
+
+axios文档传送门
+http://github.com/axios/axios

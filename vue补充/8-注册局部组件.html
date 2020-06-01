@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<com></com>
+		</div>
+		<script type="text/javascript">
+			const myCompent = Vue.extend({
+				template:`
+				<div>
+					<h2>局部组件的标题</h2>
+					<p>局部组件的内容</p>
+				</div>
+				`
+			})
+			let app = new Vue({
+				el:"#app",
+				components:{
+					com:myCompent
+				}
+			})
+		</script>
+	</body>
+</html>
+<!-- 问题：
+标签和组件的命名：不能重名，不能是包含关系
+错：myCom:myCompent -->

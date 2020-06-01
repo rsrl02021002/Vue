@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<!-- 原理：v-show操作display：none -->
+	<body>
+		<div id="app">
+			<button type="button" @click="changeImg">切换显示</button>
+			<button type="button" @click="subAge">减小年龄</button>
+			<span v-text="age"></span>
+			<button type="button" @click="addAge">增加年龄</button>
+			<img src="img/cat.jpg" v-show="isShow">
+			<img src="img/cat2.jpg" v-show="age<=17">
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el:"#app",
+				data:{
+					isShow:true,
+					age:17
+				},
+				methods:{
+					changeImg:function(){
+						// isShow=!isShow
+						this.isShow=!this.isShow
+					},
+					addAge:function(){
+						this.age++;
+					},
+					subAge:function(){
+						this.age--;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
+<!-- 问题：
+isShow=!isShow
+原因：
+在methods中调用data中的数据，使用this -->

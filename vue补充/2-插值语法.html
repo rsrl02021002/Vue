@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+<!-- 		mustache语法 插值语法
+		可以直接写变量，还可以做简单的表达式 -->
+		<div id="app">
+			{{message}}
+			<br>
+			<!-- 简单的表达式 字符拼接 -->
+			{{message + message2}}
+			<br>
+			<!-- 变量间显示空格的两种方法 -->
+			{{message +' '+ message2}}
+			<br>
+			{{message}} {{message2}}
+			<br>
+			<!-- 计算：数字的倍 -->
+			{{num * 2}}
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el:"#app",
+				data:{
+					message:"哔哩哔哩",
+					message2:"干杯",
+					num:100
+				},
+				methods:{
+					
+				}
+			})
+		</script>
+	</body>
+</html>

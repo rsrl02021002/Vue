@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			总价：{{totalPrice}}
+			<br>
+			<!-- ES6语法：for循环：总价：{{totalPrice2}} -->
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el:"#app",
+				data:{
+					books:[
+						{name:"计算机组成原理",price:50},
+						{name:"计算机网络",price:32},
+						{name:"操作系统",price:76},
+						{name:"高级语言程序设计",price:10}
+					]
+				},
+				methods:{
+					
+				},
+				computed:{
+					totalPrice:function(){
+						let result=0;
+						for(let i=0;i<this.books.length;i++){
+							result+=this.books[i].price;
+						}
+						return result;
+					}
+					// // 扩展:ES6语法
+					// totalPrice2:function(){
+					// 	let result = 0;
+					// 	for(let i in this.books){
+					// 		// console.log(i);
+					// 		// result+=this.books[i].price;
+					// 	}
+					// 	return result;
+					// },
+					// totalPrice2:function(){
+					// 	let result = 0;
+					// 	for( book of this.books){
+							
+					// 	}
+					// 	return result;
+					// }
+				}
+			})
+		</script>
+	</body>
+</html>
+<!-- 问题：
+在回调函数中，for(;this.arr.length;)，不要忘记this -->

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!-- el：挂载点：类似css选择器，支持类、标签等选择器-->
+		<!-- el作用范围：可以内部嵌套，在外部无效 -->
+		<!-- el支持挂载在双标签，不支持单标签 -->
+		<!-- el可以挂在到除html、body标签以外的双标签 -->
+		{{str}}
+		<div id="app">
+			{{str}}
+			<span>
+				{{str}}
+			</span>
+			<!-- 大括号：插值表达式 模板语法 -->
+			<!-- 作用：data数据和页面关联 -->
+			<div>
+				<!-- data中可以写简单和复杂数据类型 -->
+				<!-- 遵循点对象的语法和数组的索引语法 -->
+				姓名：{{student.name}},
+				年龄：{{student.age}},
+				性别：{{student.sex}},
+				学校：{{school[0]}}
+			</div>
+		</div>
+		<script type="text/javascript">
+			let app = new Vue({
+				el:"#app",
+				data:{
+					str:"helloworld",
+					student:{
+						name:"张三",
+						sge:20,
+						sex:"man"
+					},
+					school:["东林","东农","哈工程","哈工大"]
+				}
+			})
+		</script>
+	</body>
+</html>
+<!-- 出现问题：
+{{str}}
+{{str}} {{str}}
+姓名：{{student.name}}, 年龄：{{student.age}}, 性别：{{student.sex}}, 学校：{{school[0]}}
+原因：
+引号用的中文标点 -->

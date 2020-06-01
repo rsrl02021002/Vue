@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<!-- v-text作用：替换标签的全部内容 -->
+	<!-- {{}}插值表达式作用：替换部分内容 -->
+	<!-- 内部支持写表达式，比如拼接字符串 -->
+	<body>
+		<div id="app">
+			<!-- v-text标签内的值会被全部替换 -->
+			<!-- <p>{{str}}</p>这种写法叫做插值表达式 -->
+			<!-- v-text和插值表达式都支持字符串拼接 -->
+			<p>有没有被替换掉?{{str}}</p>
+			<p v-text="str">有没有被替换掉</p>
+			<p v-text="str+'!'"></p>
+			<p>{{str+"!"}}</p>
+		</div>
+		
+		<script>
+			let app = new Vue({
+				el:"#app",
+				data:{
+					str:"你好"
+				}
+			})
+		</script>
+	</body>
+</html>

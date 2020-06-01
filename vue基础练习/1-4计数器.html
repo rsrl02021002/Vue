@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<button @click="sub">-</button>
+			<span v-text="num"></span>
+			<button @click="add">+</button>
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el:"#app",
+				data:{
+					num:1
+				},
+				methods:{
+					sub:function(){
+						// if(num<=1){
+						// 	alert("别点了，到底了")
+						// }else{
+						// 	this.num--;
+						// }
+						if(this.num<=1){
+							alert("别点了，到底了")
+						}else{
+							this.num--;
+						}
+					},
+					add:function(){
+						// if(num>=10){
+						// 	alert("别点了，到头了")
+						// }else{
+						// 	this.num++;
+						// }
+						if(this.num>=10){
+							alert("别点了，到头了")
+						}else{
+							this.num++;
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
+<!-- 问题：
+报错num is not defined
+原因
+判断num数值，直接用num不对(获取不到)，应该用this.num(在方法中，通过this获取data中的数据). -->

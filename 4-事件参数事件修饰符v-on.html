@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+	<!-- 	事件绑定写的方法成函数调用的形式，可以传入自定义的参数
+		定义方法时需要定义形参来接收传入的实参
+		事件后面跟上.修饰符可以对事件进行限制
+		.enter触发的按键为回车
+		修饰符有多种 -->
+		<div id="app">
+			<input type="button" name="" id="" value="点击" @click="sayHi"/>
+			<input type="button" name="" id="" value="点击" @click="sayHi('吃了没')"/>
+			<input type="button" name="" id="" value="点击" @click="sayHi('吃了没','干啥去')"/>
+			<input type="text" name="" id="" value="" @keyup.enter="tip"/>
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el:"#app",
+				data:{
+					
+				},
+				methods:{
+					sayHi:function(p1,p2){
+						console.log("你好！"),
+						console.log(p1),
+						console.log(p2)
+					},
+					tip:function(){
+						alert("输入成功")
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

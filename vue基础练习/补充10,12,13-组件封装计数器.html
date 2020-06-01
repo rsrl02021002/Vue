@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<mycomputer></mycomputer>
+		</div>
+		
+		<!-- template模板 -->
+		<template id="compute_tem">
+			<div id="app">
+				<h1>当前计数：{{num}}</h1>
+				<input type="button" name="" id="" value="-" v-on:click="subNum" />
+				<input type="button" name="" id="" value="+" v-on:click="addNum" />
+			</div>
+		</template>
+		
+		<script type="text/javascript">
+			// 注册全局组件 语法糖
+			Vue.component('mycomputer',{
+				template:'#compute_tem',
+				data(){
+					return{
+						num:0
+					}
+				},
+				methods:{
+					subNum:function(){
+						this.num--;
+					},
+					addNum:function(){
+						this.num++;
+					}
+				}
+			})
+			
+			// vue实例
+			var app = new Vue({
+				el:"#app",
+			})
+		</script>
+	</body>
+</html>

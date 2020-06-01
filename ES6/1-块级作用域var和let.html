@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button>按键1</button>
+		<button>按键2</button>
+		<button>按键3</button>
+		<button>按键4</button>
+		<button>按键5</button>
+		<script type="text/javascript">
+			//1. 变量作用域:变量在什么范围是可用的,
+			{
+				var name = "zz";
+				console.log(name);
+			}
+			console.log(name);
+
+			// 2. 没有块级作用域引起的问题:if块级
+			var func;
+			if (true) {
+				var name = "ss";
+				func = function() {
+					console.log(name);
+				}
+				func();
+			}
+			console.log(name);
+
+			// 3. for块级
+			// var每次被覆盖,只保留最后一次
+			// console.log("第"+i+"个按钮被点击");
+			// const btn = document.getElementsByTagName("button");
+			// for (var i = 0; i < 5; i++) {
+			// 	btn[i].addEventListener('click', function() {
+			// 		console.log("第" + i + "个按钮被点击");
+			// 	})
+			// }
+
+			//ES5中解决办法
+			// 为什么函数的闭包可以解决，因为函数有作用域
+			// const btn = document.getElementsByTagName("button");
+			// for (var i = 0; i < 5; i++) {
+			// 	(function(i) {
+			// 			btn[i].addEventListener('click', function() {
+			// 					console.log("第" + i + "个按钮被点击");
+			// 				})
+			// 			}
+			// 	)(i)
+			// }
+			
+			// ES6中let解决if,for的块级作用域
+			const btn = document.getElementsByTagName("button");
+			for (let i = 0; i < 5; i++) {
+				(function(i) {
+						btn[i].addEventListener('click', function() {
+								console.log("第" + i + "个按钮被点击");
+							})
+						}
+				)(i)
+			}
+		</script>
+	</body>
+</html>

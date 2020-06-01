@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<cpn v-bind:cmessage='message' v-bind:cmovie='movie'></cpn>
+		</div>
+
+		<template id="cpn">
+			<!-- 注意：此处模板使用一个根标签 -->
+			<div>
+				<ul>
+					<li v-for="item in cmovie">{{item}}</li>
+				</ul>
+				<p>{{cmessage}}</p>
+			</div>
+		</template>
+
+		<script type="text/javascript">
+			var app = new Vue({
+				el: "#app",
+				data: {
+					message: "强烈推荐",
+					movie: ["功夫瑜伽", "警察故事", "十二生肖", "神话"]
+				},
+				components: {
+					cpn: {
+						template: "#cpn",
+						props: ["cmovie", "cmessage"]
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

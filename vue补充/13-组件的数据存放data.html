@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 组件实例 -->
+			<cpn></cpn>
+		</div>
+		<!-- 问题1： 组件能不能访问vue实例的data？ -->
+		<!-- 不能！ -->
+		<!-- 组件有存放自己data的地方： 组件的data属性 -->
+		<!-- 组件的data只能是函数,且返回一个对象,对象内部保存着数据 -->
+		<!-- data(){return{}} -->
+		<template id="tem">
+			<div>
+				<h2>语法糖注册全局组件方式</h2>
+				<p>这是内容</p>
+				<p>{{message}}</p>
+			</div>
+		</template>
+		
+		<script type="text/javascript">
+			
+			// （推荐使用）语法糖注册全局组件
+			Vue.component('cpn',{
+				template:`#tem`,
+				data(){
+					return{
+						message:"哔哩哔哩"
+					}
+				}
+			});
+			
+			var app = new Vue({
+				el:"#app",
+			})
+		</script>
+	</body>
+</html>

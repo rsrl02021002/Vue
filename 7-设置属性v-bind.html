@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<!-- 设置属性 -->
+	<!-- v-bind:属性名="data中设置的属性" -->
+	<!-- 简写   :属性名="data中的属性" -->
+	
+	<!-- 三元表达式 -->
+	<!-- 对象方式  增删class属性，建议使用对象方式 -->
+	<style type="text/css">
+		.active{
+			border: 1px solid red;
+		}
+	</style>
+	<body>
+		<div id="app">
+			<a href="http://bilibili.com">哔哩哔哩</a>
+			<a v-bind:href="aHref" v-bind:title="aTitle+'!!!这里可以字符串拼接'">哔哩哔哩</a>
+			<a :href="aHref">哔哩哔哩</a>
+			<!-- 三元表达式 isActive?'active':'' 判断isactive是否为真，如果为真，冒号前的生效，即class="active"，如果为假，冒号后的生效,即class="''" -->
+			<span v-bind:class="isActive?'active':''" @click="toggleActive">点我，切换class属性</span>
+			<!-- 对象方式 {active:isActive} active是否生效，取决于isActive是真是假 -->
+			<span v-bind:class="{active:isActive}" @click="toggleActive">点我，切换class属性</span>
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el:"#app",
+				data:{
+					aHref:"http://bilibili.com",
+					aTitle:"哔哩哔哩网站",
+					isActive:true
+				},
+				methods:{
+					toggleActive:function(){
+						this.isActive=!this.isActive;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

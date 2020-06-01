@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+<!-- 	图片地址列表使用数组保存
+	v-bind设置属性src
+	频繁切换使用v-show -->
+	<body>
+		<div id="app">
+			<input type="button" name="" id="" value="<" @click="subImg" v-show="index>0"/ >
+			<img :src="imgArr[index]" width="10%" height="10%">
+			<input type="button" name="" id="" value=">" @click="addImg" v-show="index<imgArr.length-1"/>
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el:"#app",
+				data:{
+					imgArr:["../img/wallpaper1.jpg","../img/wallpaper2.jpg","../img/wallpaper3.jpg","../img/wallpaper4.jpg"],
+					index:0
+				},
+				methods:{
+					subImg:function(){
+						// 错误
+						// this.index=this.index--
+						this.index--
+					},
+					addImg:function(){
+						// this.index=this.index++
+						this.index++
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
+<!-- 问题：
+methods中使用自减
+this.num=this.num--错误
+this.num--正确 -->
+<!-- 索引：使用方法 -->

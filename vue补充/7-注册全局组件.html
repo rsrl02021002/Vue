@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+<!-- 	组件使用的三个步骤：
+	 1. 创建组件构造器：调用Vue.extend()方法
+	 2. 注册组件：调用Vue.component()方法
+	 3. 使用组件：在Vue实例的作用范围内使用组件 
+	 注意这种方法，注册的是全局组件，意思是：可以在多个vue实例中使用，见app2 -->
+	<body>
+		<div id="app">
+			<!-- 第三步 在vue中使用my-com标签 -->
+			<my-com></my-com>
+		</div>
+		<div id="app2">
+			<my-com></my-com>
+		</div>
+		<script type="text/javascript">
+			// 第一步 创建组件构造器
+			const myComponent = Vue.extend({
+				// ES6语法:``包含的内容可以换行
+				// template翻译模板
+				template:`
+				<div>
+					<h2>组件标题</h2>
+					<p>组件中的一个段落的内容</p>
+				</div>	`
+			});
+			
+			<!-- 第二步 注册组件且定义组件标签名称 -->
+			Vue.component('my-com',myComponent);
+			
+			let app = new Vue({
+				el:"#app"
+			})
+			let app2 = new Vue({
+				el:"#app2"
+			})
+			
+		</script>
+	</body>
+</html>
+<!-- 问题：
+templat:``
+ES6语法，容易错写成'' -->

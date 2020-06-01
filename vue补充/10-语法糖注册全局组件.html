@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<cpn1></cpn1>
+			<cpn2></cpn2>
+		</div>
+		<script type="text/javascript">
+			// 基本的注册全局组件方式
+			const cpnC1 = Vue.extend({
+				template:`
+				<div>
+					<h2>基本的注册全局组件方式</h2>
+					<p>这是内容</p>
+				</div>
+				`
+			});
+			Vue.component('cpn1',cpnC1);
+			// （推荐使用）语法糖注册全局组件
+			Vue.component('cpn2',{
+				template:`
+				<div>
+					<h2>语法糖注册全局组件方式</h2>
+					<p>这是内容</p>
+				</div>
+				`
+			});
+			var app = new Vue({
+				el:"#app",
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+<!-- 	v-if直接操作dom元素切换显示
+	v-show控制display:none切换显示
+	频繁切换使用v-show，不频繁切换使用v-if，前者消耗小 -->
+	<body>
+		<div id="app">
+			<input type="button" name="" id="" value="v-if" @click="toggleIsIf"/>
+			<input type="button" name="" id="" value="v-show" @click="toggleisShow"/>
+			<p v-text="str" v-if="isIf"></p>
+			<p v-text="str2" v-show="isShow"></p>
+		</div>
+		
+		<script type="text/javascript">
+			var app = new Vue({
+				el:"#app",
+				data:{
+					str:"张三v-if",
+					str2:"李四v-show",
+					isIf:true,
+					isShow:true
+				},
+				methods:{
+					toggleIsIf:function(){
+						this.isIf=!this.isIf
+					},
+					toggleisShow:function(){
+						this.isShow=!this.isShow
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
