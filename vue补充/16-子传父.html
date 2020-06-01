@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!-- 父模板 -->
+		<div id="app">
+			<!-- 父传子 -->
+			<!-- <cpn :cmovie="movie"></cpn> -->
+			<!-- 子传父 -->
+			<cpn @itemclick="cpnClick"></cpn>
+		</div>
+		
+		<!-- 子模板 -->
+		<template id="cpn">
+			<div>
+				<button v-for="item in catelates" @click="btnClick(item)">{{item.name}}</button>
+				<!-- <input type="button" name="" id="" value="" v-for="item in catelates">{{item.name}}</input> -->
+			</div>
+		</template>
+		
+		<script type="text/javascript">
+			// 创建组件构造器
+			const cpn={
+				template:"#cpn",
+				// 父传子
+				// props:{
+				// 	cmovie:{
+				// 		type:Array,
+				// 		default(){
+				// 			return[]
+				// 		},
+				// 		required:true
+				// 	}
+				// }
+				data(){
+					return{
+						catelates:[
+							{id:101,name:"热门推荐"},
+							{id:102,name:"手机数码"},
+							{id:103,name:"家用家电"}
+						]
+					}
+				},
+				methods:{
+					btnClick:function(item){
+						// console.log(item);
+						// 传给父组件
+						this.$emit('itemclick')
+					}
+				}
+			}
+			
+			
+			let app = new Vue({
+				el:"#app",
+				data:{
+					movie:["神话","十二生肖","警察故事"]
+				},
+				methods:{
+					cpnClick:function(){
+						console.log('cpnClick')
+					}
+				},
+				
+				// 注册子组件
+				components:{
+					cpn
+					// :{
+						// template:"#cpn",
+						// props:{
+						// 	cmovie:{
+						// 		type:Array,
+						// 		default(){
+						// 			return[]
+						// 		},
+						// 		required:true
+						// 	}
+						// }
+					// }
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- Vue实例中 在vue实例作用域中查找 -->
+			<cpn v-show="isShow"></cpn>
+		</div>
+
+		<!-- 子模板 -->
+		<template id="cpn">
+			<!-- 在自己作用域查找isShow 子模板在子组件 子作用域查找isShow -->
+			<div>
+				<p>这是子组件</p>
+				<p v-show="isShow">这是子组件的一句话</p>
+			</div>
+		</template>
+
+		<!-- Vue实例 -->
+		<script type="text/javascript">
+			var app = new Vue({
+				el: "#app",
+				data:{
+					isShow:true
+				},
+				components: {
+					cpn: {
+						template: "#cpn",
+						data(){
+							return{
+								isShow:false
+							}
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

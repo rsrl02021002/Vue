@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<!-- 父访问子
+	$children -->
+	<!-- 这种方法不常用 因为涉及到数组下标  需求发生变化时 改动地方较多 -->
+	<body>
+		<!-- 父组件模板 -->
+		<div id="app">
+			<cpn></cpn>
+			<!-- 创建多个子组件 对应$children返回的是数组 -->
+			<cpn></cpn>
+			<cpn></cpn>
+			<cpn></cpn>
+			<button @click="btnClick">按钮</button>
+		</div>
+		
+		<!-- 子组件模板 -->
+		<template id="cpn">
+			<div>
+				我是子组件
+			</div>
+		</template>
+		
+		<!-- Vue实例 父组件 -->
+		<script type="text/javascript">
+			let app = new Vue({
+				el:"#app",
+				// 注册子组件
+				components:{
+					cpn:{
+						template:"#cpn",
+						// 子组件的事件 一会儿父组件访问它
+						methods:{
+							showMessage:function(){
+								console.log("message");
+							}
+						},
+						data(){
+							return {name:"我是子组件data里的name"}
+						}
+					}
+				},
+				methods:{
+					btnClick:function(){
+						console.log(this.$children);
+						// 父组件可以有多个子组件,所以返回的是数组
+						// 父组件访问子组件的方法
+						this.$children[0].showMessage();
+						// 父组件访问子组件的data
+						console.log(this.$children[2].name);
+					}
+				}
+				
+			})
+		</script>
+	</body>
+</html>

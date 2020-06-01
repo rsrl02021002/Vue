@@ -26,11 +26,29 @@
 				data: {
 					message: "强烈推荐",
 					movie: ["功夫瑜伽", "警察故事", "十二生肖", "神话"]
+					
 				},
 				components: {
 					cpn: {
 						template: "#cpn",
-						props: ["cmovie", "cmessage"]
+						// props:[]数组
+						// props: ["cmovie", "cmessage"],
+						
+						// props:{}对象
+						// 支持类型:String Number Boolean Array Object Date Function Symbol
+						props:{
+							// 优点:设置数据类型
+							cmovie:Array,
+							// cmessage:String
+							// 优点:提供默认值
+							cmessage:{
+								type:String,
+								// default 当是数组或对象时，默认值必须是一个函数default(){return[]}
+								default:'aaaa',
+								// required:true必须传值
+								required:true
+							}
+						},
 					}
 				}
 			})

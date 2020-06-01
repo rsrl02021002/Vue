@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 2.在<cpn></cpn>标签中间 写想要替换的内容<xx>xx</xx> -->
+			<cpn><button>按钮</button></cpn>
+			<cpn><a href="http://baidu.com">百度一下</a></cpn>
+			<cpn><input type="text" name="" id="" value="" placeholder="请输入一些内容" /></cpn>
+			<cpn></cpn>
+			<!-- 当替换的内容为 多个标签时 直接写多个标签 会全部替换 -->
+			<cpn>
+				<p>这是一个p</p><span>这是一个span</span><span>这是一个span</span>
+				<p>这又是一个p</p><a href="http://baidu.com">百度一下</a>
+			</cpn>
+		</div>
+
+		<!-- 子模板 -->
+		<template id="cpn">
+			<div>
+				<p>这是子组件</p>
+				<p>这是一句话</p>
+				<!-- 1.变动的地方 slot标签 -->
+				<!-- 默认值：当没有设定<cpn></cpn>中间的内容时 按默认值显示按钮 -->
+				<slot><button>按钮</button></slot>
+			</div>
+		</template>
+
+		<!-- Vue实例 -->
+		<script type="text/javascript">
+			var app = new Vue({
+				el: "#app",
+				components: {
+					cpn: {
+						template: "#cpn"
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

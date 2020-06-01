@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<!-- 1.子读取父的数据 -->
+	<!-- 2.子修改数据，父同时被修改 -->
+			<!-- 不能直接修改子数据，应该先修改父数据 -->
+	<body>
+		<!-- 父模板 -->
+		<div id="app">
+			<cpn :cnumber1="num1" :cnumber2="num2" @num1change="num1change"></cpn>
+		</div>
+		
+		<!-- 子模板 -->
+		<template id="cpn">
+			<div>
+				<p>props:cnumber1{{cnumber1}}</p>
+				<p>dnumber1:{{dnumber1}}</p>
+				<input type="text" v-model="dnumber1" @input="num1Input">
+				<p>props:{{cnumber2}}</p>
+				<p>dnumber2:{{dnumber2}}</p>
+				<input type="text" value="dnumber2" @input="dnumber2=$event.target.value">
+			</div>
+		</template>
+		
+		
+		<script type="text/javascript">
+			var app = new Vue({
+				el:"#app",
+				data:{
+					num1:1,
+					num2:2
+				},
+				components:{
+					cpn:{
+						template:"#cpn",
+						props:{
+							cnumber1:Number,
+							cnumber2:Number
+						},
+					data(){
+						return{
+							dnumber1:this.cnumber1,
+							dnumber2:this.cnumber2
+						}
+					},
+					methods:{
+						num1Input:function(event){
+							// 将input中的value赋值到dnumber中
+							this.dnumber1=event.target.value;
+							
+							// 为了让父组件可以修改值,发送一个事件
+							this.$emit('num1change',this.dnumber1)
+							
+						}
+					}
+					}
+				},
+				methods:{
+					num1change:function(value){
+						// console.log(typeof value);
+						// value传过来的是string类型
+						this.num1=parseInt(value);
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
+<!-- 问题： -->
+<!-- <cpn :cnumber1="num1" :cnumber2="num2"></cpn> -->
+<!-- 绑定在cpn记住 -->
